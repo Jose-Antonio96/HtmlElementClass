@@ -67,7 +67,8 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
     }
 
     public function getHTML(){
-        $html = "<".$this->tagname; //.= signfica que se concatena con lo que le sigue
+        $html = "<".$this->tagname; //.= signfica que se concatena con lo que 
+                                    //le sigue
         foreach ($this->attribute as $attname => $attvalue){
             $html .= "".$attname."\"".$attvalue."\"";        
         }
