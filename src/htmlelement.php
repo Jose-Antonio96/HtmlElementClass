@@ -11,7 +11,7 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
         //Se añade externamente atributos a estos valores
         string $tagname, 
         array $attribute = [], 
-        array $content= [], 
+        array|string|null $content= [], 
         bool $isempty=true
         ){
         $this-> tagname = $tagname; 
@@ -54,7 +54,7 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
         return $this->tagname;
     }
 
-    public function isEmptyElement(): bool{
+    public function isemptyElement(): bool{
         return $this->isempty;
     }
 
@@ -66,19 +66,30 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
         return $this->tagname == $HTMLELEMENTCLASS-> GetTagname(); //Esta función es pública. Si accedemos a por ejemplo, "tagname", no funcionaría porque es un atributo  privado
     }
 
-    public function getHTML(
-            string $tagname,
-            string $attribute,
-            string $content
-            ){
-                if(isEmpty()=true){
-                    $tagname = GetTagname()
+    public function getHTML(){
+        $html = "<".$this->tagname; //.= signfica que se concatena con lo que le sigue
+        foreach ($this->attribute as $attname => $attvalue){
+            $html .= "".$attname."\"".$attvalue."\"";        
+        }
+        if($this->isempty){
+            $html .=" />";
+        }
+        else{
+            $html .=">";
+            if(is_array($this->content)){
+                foreach ($this->content as $content) {
+                    $html .= $content->getHTML();
                 }
-            return $this-> ;
-            
+                    }else{
+                    $html .= $this->content;
+                        }
+                        $html .="</".$this->tagname.">";
+                            }
+            return $html;
     }
-    
+
 }
+    
 
 $tag1 = new HTMLELEMENTCLASS("div", ["id"=>"div1", "class"=>"divclass"], [], false);
 $tag2 = new HTMLELEMENTCLASS("p", ["id"=>"div2", "class"=>"divclass"], [], false);    
@@ -86,3 +97,5 @@ $tag2 = new HTMLELEMENTCLASS("p", ["id"=>"div2", "class"=>"divclass"], [], false
 echo $tag1-> GetTagname();
 echo $tag2-> GetTagname();
 //Muestra en pantalla el nombre del tag
+
+?>

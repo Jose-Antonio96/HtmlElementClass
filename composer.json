@@ -9,12 +9,19 @@
     "autoload":{
         "files": [
             "src/htmlelement.php"
-        ]
+        ],
+        "psr-4":{
+            "PHPUnit\\": "vendor/phpunit/phpunit/src/", 
+            "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
+        }
     },
     "autoload-dev": {
         "files": [
             "src/htmlelement.php"
-            
-        ]
+        ],
+        "psr-4":{
+            "PHPUnit\\": "vendor/phpunit/phpunit/src/", 
+            "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
+        }
     }
 }
