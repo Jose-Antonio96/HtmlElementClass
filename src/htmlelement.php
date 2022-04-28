@@ -103,6 +103,20 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
             return $html;
     }
 
+    private function contentUnaccepted(){
+
+    }
+
+    private function certainAttributes(){
+
+    }
+
+    private function certainValues(){
+        $attribute= new HTMLELEMENTCLASS("p",[" id="=>"p1", " class="=>"pclass"],"Adios");
+        if($this->GetAttribute()==5);
+        return true;
+    }
+
 }
     
 
