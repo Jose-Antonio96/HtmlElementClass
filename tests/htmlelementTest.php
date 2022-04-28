@@ -45,7 +45,9 @@ final class htmlelementTest extends TestCase{
     }
 
     public function DPtestGetTagname(){
-        $p = new HTMLELEMENTCLASS('<p id="p1" class="pclass">Adios</p>');
+        $p = new HTMLELEMENTCLASS("p",
+        [" id="=>"p1", " class="=>"pclass"],
+        "Adios");
         return [
             "Prueba 4" => [
                 'p', $p
@@ -56,7 +58,7 @@ final class htmlelementTest extends TestCase{
      * @dataProvider DPtestGetTagname
      */
     public function testGetTagname($esperado, $actual){
-        $this->assertEquals($esperado, $actual->getHTML());
+        $this->assertEquals($esperado, $actual->getTagname());
     }
 
     public function DPtestisemptyElement(){
@@ -71,7 +73,7 @@ final class htmlelementTest extends TestCase{
      * @dataProvider DPtestisemptyElement
      */
     public function testisemptyElement($esperado, $actual){
-        $this->assertTrue($esperado, $actual->getHTML());
+        $this->assertTrue($esperado, $actual->isemptyElement());
     }
     
 }
