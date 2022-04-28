@@ -82,6 +82,8 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
     public function PutContent(){
         $writeContent="";
         if($this->content==null)return "";
+        if (is_string($this->content))
+            return $this->content;
             foreach ($this->content as $content) {
                 if(is_object($content)){
                     if(get_class($content)=="htmlelement") $writeContent .=$content->getHTML();
