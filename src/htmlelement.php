@@ -5,14 +5,14 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
     private string $tagname="";
     private array $attribute=[];
     private array|string|null $content=null;
-    private bool $isempty; //Puede ser unicamente o falso o verdadero
+    private bool $isempty; //Si es una etiqueta vacia o no
 
     public function __construct( //El lenguaje sabe que hacer con esto
         //Se añade externamente atributos a estos valores
         string $tagname, 
         array $attribute = [], 
         array|string|null $content= [], 
-        bool $isempty=true
+        bool $isempty=true 
         ){
         $this-> tagname = $tagname; 
         $this-> attribute = $attribute;
