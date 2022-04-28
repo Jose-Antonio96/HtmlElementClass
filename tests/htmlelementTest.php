@@ -65,7 +65,7 @@ final class htmlelementTest extends TestCase{
         $h1 = new HTMLELEMENTCLASS('<h1></h1>');
         return [
             "Prueba 5" => [
-                '<h1></h1>', $h1
+                true, $h1
             ]
         ];
     }
