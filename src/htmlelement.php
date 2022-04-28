@@ -37,7 +37,8 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
     public function addContent(
         array|string|null $content
         ){
-        if(is_array($this->content)){
+        if(is_array($this->content)){ //controlando que lo que ya se tenga 
+                                     //sea un array de elementos
             if (is_array($content))
                 $this->content = array_merge($this->content, $content);
             else   
@@ -46,7 +47,7 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
             if(is_array($content))
                 $this->content = array_merge([$this->content], $content);
             else
-            $this->content = $content;
+                $this->content = $content;
         }
     }
 
@@ -66,26 +67,37 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
         return $this->tagname == $HTMLELEMENTCLASS-> GetTagname(); //Esta función es pública. Si accedemos a por ejemplo, "tagname", no funcionaría porque es un atributo  privado
     }
 
-    public function getHTML(){
-        $html = "<".$this->tagname; //.= signfica que se concatena con lo que 
-                                     //le sigue
-        foreach ($this->attribute as $attname => $attvalue){
-            $html .= "".$attname."\"".$attvalue."\"";        
+    public function GetAttribute(){
+        $typeContent = "";
+        foreach($this->attribute as $attname => $attvalue){
+            $typeContent.= $attvalue==null?"":$attname . '="' . $attvalue . '" ';  
         }
+        return rtrim($typeContent);
+    }
+
+    public function CloseTag(){
+        return "</".$this->tagname.">";
+    }
+
+    public function PutContent(){
+        $writeContent="";
+        if($this->content==null)return "";
+            foreach ($this->content as $content) {
+                if(is_object($content)){
+                    if(get_class($content)=="htmlelement") $writeContent .=$content->getHTML();
+                }
+            }
+    }
+
+    public function getHTML(){
+        $html = "<".$this->tagname.$this->GetAttribute(); //.= signfica que se concatena
+                                                         //con lo que le sigue
         if($this->isempty){
             $html .=" />";
         }
         else{
-            $html .=">";
-            if(is_array($this->content)){
-                foreach ($this->content as $content) {
-                    $html .= $content->getHTML();
+            $html .=">".$this->PutContent().$this->CloseTag(); 
                 }
-                    }else{
-                    $html .= $this->content;
-                        }
-                        $html .="</".$this->tagname.">";
-                            }
             return $html;
     }
 

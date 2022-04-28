@@ -6,19 +6,19 @@ final class htmlelementTest extends TestCase{
     public function DPtesthtmlelement(){
         $class1= new HTMLELEMENTCLASS( //Se añade "new" ya que es un nuevo objeto
             "div",
-            [" id="=>"div1", " class="=>"divclass"],
+            [" id"=>"div1", "class"=>"divclass"],
             [],
             false
         );
         $class2= new HTMLELEMENTCLASS( 
             "p",
-            [" id="=>"p1", " class="=>"pclass"],
+            [" id"=>"p1", "class"=>"pclass"],
             "Hola",
             false
         );
         $class3= new HTMLELEMENTCLASS( 
             "article",
-            [" id="=>"article1", " class="=>"articleclass"],
+            [" id"=>"article1", "class"=>"articleclass"],
             null,
             false
         );
