@@ -101,20 +101,36 @@ class HTMLELEMENTCLASS{ //Primero se crean las variables y se indican que son
             $html .=">".$this->PutContent().$this->CloseTag(); 
                 }
             return $html;
-    }
-
-    private function contentUnaccepted(){
-
-    }
+    } 
 
     private function certainAttributes(){
-
+        
+        $name = array(
+            "Primera etiqueta" => "nav",
+            "Segunda etiqueta" => "i",
+            "Tercera etiqueta" => "div",
+        );
+    
+        $attributes = array(
+            "Atributo uno" => ["id" =>"nav1", "class"=>"navclass"],
+            "Atributo dos" => ["id" =>"i1", "class"=>"iclass"],
+            "Atributo tres" => ["id"=>"div3", "class"=>"divclass"],
+        );
+        If (array_key_exists($name, $attributes)){
+        return false;
+        }  
+        else{
+            return true;
+        }
+        
     }
 
-    private function certainValues(){
-        $attribute= new HTMLELEMENTCLASS("p",[" id="=>"p1", " class="=>"pclass"],"Adios");
-        if($this->GetAttribute()==5);
-        return true;
+    private function certainValues(HTMLELEMENTCLASS $HTMLELEMENTCLASS):bool{
+        return $this->attribute ==  $HTMLELEMENTCLASS->GetAttribute();
+    }
+
+    private function contentUnaccepted(HTMLELEMENTCLASS $HTMLELEMENTCLASS):bool{
+        return $this->content = $HTMLELEMENTCLASS->isemptyElement();
     }
 
 }
