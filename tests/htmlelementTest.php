@@ -75,6 +75,61 @@ final class htmlelementTest extends TestCase{
     public function testisemptyElement($esperado, $actual){
         $this->assertTrue($esperado, $actual->isemptyElement());
     }
-    
+
+    public function DPtestcertainAttribute(){
+        $class4= new HTMLELEMENTCLASS(
+            "div",
+            [" id"=>"div1", "class"=>"divclass"],
+            [],
+            false
+        );
+        $class5= new HTMLELEMENTCLASS( 
+            "nav",
+            [" id"=>"nav1", "class"=>"navclass"],
+            "Hola",
+            false
+        );
+        $class6= new HTMLELEMENTCLASS( 
+            "i",
+            [" id"=>"id1", "class"=>"idclass"],
+            null,
+            false
+        );
+        return [
+            "Prueba 4" => [
+                '<div id="div1" class="divclass"></div>',
+                $class4
+            ],
+            "Prueba 5" => [
+                '<nav id="nav1" class="nav1">Hola</nav>',
+                $class5
+            ],
+            "Prueba 6" => [
+                '<i id="i1" class="iclass"></i>',
+                $class6
+            ],
+        ];
+    }
+    /**
+     * @dataProvider DPtestisemptyElement
+     */
+    public function testcertainAttribute($esperado, $actual){
+        $this->assertTrue($esperado, $actual->certainAttributes());
+    }
+
+    public function DPtestcertainValues(){
+        $attribute= new HTMLELEMENTCLASS('<div></div>');
+        return [
+            "Prueba 7" => [
+                true, $attribute
+            ]
+        ];
+    }
+    /**
+     * @dataProvider DPtestcertainValues
+     */
+    public function testcertainValues($esperado, $actual){
+        $this->assertTrue($esperado, $actual->certainValues());
+    }
 }
 ?>
