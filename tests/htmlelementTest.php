@@ -76,7 +76,7 @@ final class htmlelementTest extends TestCase{
         $this->assertTrue($esperado, $actual->isemptyElement());
     }
 
-    public function DPtestcertainAttribute(){
+    public function DPtestisCertainAttribute(){
         $class4= new HTMLELEMENTCLASS(
             "div",
             [" id"=>"div1", "class"=>"divclass"],
@@ -111,10 +111,10 @@ final class htmlelementTest extends TestCase{
         ];
     }
     /**
-     * @dataProvider DPtestisemptyElement
+     * @dataProvider DPtestisCertainAttribute
      */
-    public function testcertainAttribute($esperado, $actual){
-        $this->assertTrue($esperado, HTMLELEMENTCLASS::isCertainAttribute());
+    public function testisCertainAttribute($esperado, $actual){
+        $this->assertTrue($esperado, $actual->HTMLELEMENTCLASS::isCertainAttribute());
     }
 
     public function DPtestcertainValues(){
@@ -131,5 +131,24 @@ final class htmlelementTest extends TestCase{
     public function testcertainValues($esperado, $actual){
         $this->assertTrue($esperado, $actual->certainValues());
     }
+
+    public function DPtestcontentUnaccepted(){
+        $content= new HTMLELEMENTCLASS('<div></div>');
+        return [
+            "Prueba 8" => [
+                true, $content
+            ]
+        ];
+    }
+    /**
+     * @dataProvider DPtestcontentUnaccepted
+     */
+
+    public function testcontentUnaccepted($esperado, $actual){
+        $this->assertTrue($esperado, $actual->HTMLELEMENTCLASS::contentUnaccepted());
+    }
+
+    
 }
+
 ?>

@@ -1,26 +1,17 @@
 {
     "require":{
-        "php":"^8"
+        "php": ">=8"
     },
     "require-dev": {
-        "php":"^8",
         "phpunit/phpunit": "^9.5"
     },
     "autoload":{
-        "files": [
-            "src/htmlelement.php"
-        ],
-        "psr-4":{
-            "PHPUnit\\": "vendor/phpunit/phpunit/src/", 
+        "psr-4":{ 
             "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
         }
     },
     "autoload-dev": {
-        "files": [
-            "src/htmlelement.php"
-        ],
         "psr-4":{
-            "PHPUnit\\": "vendor/phpunit/phpunit/src/", 
             "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
         }
     }
