@@ -114,7 +114,7 @@ final class htmlelementTest extends TestCase{
      * @dataProvider DPtestisemptyElement
      */
     public function testcertainAttribute($esperado, $actual){
-        $this->assertTrue($esperado, $actual->certainAttributes());
+        $this->assertTrue($esperado, HTMLELEMENTCLASS::isCertainAttribute());
     }
 
     public function DPtestcertainValues(){
