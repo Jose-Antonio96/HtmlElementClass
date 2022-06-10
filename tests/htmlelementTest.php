@@ -1,22 +1,22 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use ITEC\Presencial\DAW\htmlelement\HTMLELEMENTCLASS;
+use ITEC\Presencial\DAW\htmlelement\htmlelement;
      
 final class htmlelementTest extends TestCase{
     public function DPtesthtmlelement(){
-        $class1= new HTMLELEMENTCLASS( //Se añade "new" ya que es un nuevo objeto
+        $class1= new htmlelement( //Se añade "new" ya que es un nuevo objeto
             "div",
             [" id"=>"div1", "class"=>"divclass"],
             [],
             false
         );
-        $class2= new HTMLELEMENTCLASS( 
+        $class2= new htmlelement( 
             "p",
             [" id"=>"p1", "class"=>"pclass"],
             "Hola",
             false
         );
-        $class3= new HTMLELEMENTCLASS( 
+        $class3= new htmlelement( 
             "article",
             [" id"=>"article1", "class"=>"articleclass"],
             null,
@@ -38,14 +38,14 @@ final class htmlelementTest extends TestCase{
         ];
     }
     /**
-     * @dataProvider DPtesthtmlelement
-     */
-    public function testhtmelement($esperado, $actual){
+    * @dataProvider DPtesthtmlelement
+    */
+    public function testhtmlelement($esperado, $actual){
         $this-> assertequals($esperado, $actual -> getHTML());
     }
 
     public function DPtestGetTagname(){
-        $p = new HTMLELEMENTCLASS("p",
+        $p = new htmlelement("p",
         [" id="=>"p1", " class="=>"pclass"],
         "Adios");
         return [
@@ -62,7 +62,7 @@ final class htmlelementTest extends TestCase{
     }
 
     public function DPtestisemptyElement(){
-        $h1 = new HTMLELEMENTCLASS('<h1></h1>');
+        $h1 = new htmlelement('<h1></h1>');
         return [
             "Prueba 5" => [
                 true, $h1
@@ -77,19 +77,19 @@ final class htmlelementTest extends TestCase{
     }
 
     public function DPtestisCertainAttribute(){
-        $class4= new HTMLELEMENTCLASS(
+        $class4= new htmlelement(
             "div",
             [" id"=>"div1", "class"=>"divclass"],
             [],
             false
         );
-        $class5= new HTMLELEMENTCLASS( 
+        $class5= new htmlelement( 
             "nav",
             [" id"=>"nav1", "class"=>"navclass"],
             "Hola",
             false
         );
-        $class6= new HTMLELEMENTCLASS( 
+        $class6= new htmlelement( 
             "i",
             [" id"=>"id1", "class"=>"idclass"],
             null,
@@ -114,11 +114,11 @@ final class htmlelementTest extends TestCase{
      * @dataProvider DPtestisCertainAttribute
      */
     public function testisCertainAttribute($esperado, $actual){
-        $this->assertTrue($esperado, $actual->HTMLELEMENTCLASS::isCertainAttribute());
+        $this->assertTrue($esperado, $actual->htmlelement::isCertainAttribute());
     }
 
     public function DPtestcertainValues(){
-        $attribute= new HTMLELEMENTCLASS('<div></div>');
+        $attribute= new htmlelement('autosave="unique666"');
         return [
             "Prueba 7" => [
                 true, $attribute
@@ -129,11 +129,11 @@ final class htmlelementTest extends TestCase{
      * @dataProvider DPtestcertainValues
      */
     public function testcertainValues($esperado, $actual){
-        $this->assertTrue($esperado, $actual->certainValues());
+        $this->assertTrue($esperado, $actual->htmlelement::certainValues());
     }
 
     public function DPtestcontentUnaccepted(){
-        $content= new HTMLELEMENTCLASS('<div></div>');
+        $content= new htmlelement('<br></br>');
         return [
             "Prueba 8" => [
                 true, $content
@@ -145,7 +145,7 @@ final class htmlelementTest extends TestCase{
      */
 
     public function testcontentUnaccepted($esperado, $actual){
-        $this->assertTrue($esperado, $actual->HTMLELEMENTCLASS::contentUnaccepted());
+        $this->assertTrue($esperado, $actual->htmlelement::contentUnaccepted());
     }
 
     
