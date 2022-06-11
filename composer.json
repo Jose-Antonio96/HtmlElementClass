@@ -7,12 +7,12 @@
     },
     "autoload":{
         "psr-4":{ 
-            "ITEC\\Presencial\\DAW\\htmlelement\\htmlelement": "src/"
+            "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4":{
-            "ITEC\\Presencial\\DAW\\htmlelement\\htmlelement": "src/"
+            "ITEC\\Presencial\\DAW\\htmlelement\\": "src/"
         }
     }
 }
